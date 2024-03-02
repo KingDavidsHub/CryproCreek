@@ -1,6 +1,6 @@
-const User = require('../model/user.model')
+const User = require('../models/user.model')
 const { validationResult } = require("express-validator");
-const Token = require("../model/token.model");
+const Token = require("../models/token.model");
 const moment =  require('moment')
 require('dotenv').config()
 const jwt = require('jsonwebtoken')

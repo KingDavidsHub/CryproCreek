@@ -35,6 +35,13 @@ app.get("/", (req, res) => {
   });
 });
 
+
+const userRoutes = require("./routes/user.auth.router")
+
+
+app.use("/api/user", userRoutes)
+
+
 const port = process.env.PORT || 6000;
 
 // Starting a server

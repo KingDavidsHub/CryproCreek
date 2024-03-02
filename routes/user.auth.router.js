@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const { signin, signup, verifyToken, isVerified, forgotPassWord, resendCode, resetPassword, changePassWord} = require('../controllers/user.auth.controller')
-const { protect, userRoleAuth } = require('../../middleware/auth.middleware')
+const { protect, userRoleAuth } = require('../middleware/auth.middleware')
 router.route('/signup').post(signup)
 router.route('/signin').post(signin)
 router.route('/verifyToken').post(verifyToken)
