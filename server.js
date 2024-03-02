@@ -6,19 +6,14 @@ const cors = require("cors");
 const formData = require("express-form-data");
 const app = express();
 
-require("dotenv").config
+require("dotenv").config()
 
 const uri = process.env.MONGO_URI;
 
-console.log(uri);
 
 async function connect() {
   try {
     await mongoose.connect(uri, {
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useFindAndModify: false,
     });
     console.log("connected to mongo DB");
   } catch (error) {
@@ -39,3 +34,11 @@ app.get("/", (req, res) => {
     project_name: "Cryto Creek",
   });
 });
+
+const port = process.env.PORT || 6000;
+
+// Starting a server
+app.listen(port, () => {
+  console.log(`app is running at ${port}`);
+});
+
