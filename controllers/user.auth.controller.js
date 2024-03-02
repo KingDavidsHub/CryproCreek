@@ -108,7 +108,7 @@ exports.signup = async (req,res) =>{
           </div>
           <p>If you did not request this verification code, please ignore this email.</p>
           <div class="footer">
-              <p class = "psy">Psyminmal Limited</p>
+              <p class = "psy">Cryptocreek</p>
           </div>
       </div>
               </body>
@@ -782,6 +782,72 @@ exports.forgotPassWord = async (req,res) =>{
       success: false,
       message: "Internal Error Occured"
     })
+  }
+}
+
+exports.deleteUserById = async (req,res) =>{
+  try {
+      await User.findByIdAndDelete(req.params.userId)
+
+      res.status(200).json({
+          success: true,
+          message: "User Deleted successfully"
+      })
+  } catch (error) {
+      console.log(error)
+      res.status(500).json({
+          success: false,
+          message: error.message
+      })
+  }
+}
+
+exports.getUserById = async(req,res) =>{
+  try {
+      const user = await User.findById(req.params.userId)
+
+      if(user || user !== null ){
+          res.status(200).json({
+              success: true,
+              data: user
+          })
+      } else {
+          res.status(404).json({
+              success: false,
+              message: "User not found"
+          })
+      }
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          success: false,
+          message: error.message
+      })
+  }
+}
+
+
+exports.updateUserInfo = async (req,res) =>{
+  try {
+      const user = await User.findByIdAndUpdate(req.params.userId, {
+          $set: req.body
+      }, {
+          new: true,
+          runValidators: true
+      })
+
+      res.status(200).json({
+          success: true,
+          data: user
+      })
+
+      
+  } catch (error) {
+      console.log(error)
+      res.status(500).json({
+          success: false,
+          message: error.message
+      })
   }
 }
 

@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     },
     salt:String,
     role: {
-        type: String,
+        type: Number,
         default: 0
     },
     gender: {
