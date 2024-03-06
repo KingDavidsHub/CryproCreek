@@ -18,3 +18,4 @@ router.route('/updateUserInfo/:userId').put(protect, userRoleAuth,updateUserInfo
 
 
 module.exports = router;
+
