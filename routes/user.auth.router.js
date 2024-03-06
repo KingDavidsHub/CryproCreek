@@ -13,8 +13,9 @@ router.route('/resendCode').post(resendCode)
 router.route('/changePassWord').post(protect, changePassWord)
 router.route('/resetPassWord').put(resetPassword)
 router.route('/deleteUserById/:userId').delete( protect,  deleteUserById)
-router.route('/getUserById/:userId').get( protect, userRoleAuth,getUserById)
+router.route('/getUserById/:userId').get( /*protect, userRoleAuth,*/getUserById)
 router.route('/updateUserInfo/:userId').put(protect, userRoleAuth,updateUserInfo)
 
 
 module.exports = router;
+
